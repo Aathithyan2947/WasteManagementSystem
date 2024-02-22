@@ -1,12 +1,12 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Alert } from 'react-native'
+import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, ScrollView, Alert, Image } from 'react-native'
 import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RootStackParamList } from '../App'
 
+
 type UserHomeProps=NativeStackScreenProps<RootStackParamList,'User_Home'>
 
-const User_Home = ({navigation}:UserHomeProps) => {
-
+const User_Home = ({navigation}:UserHomeProps) => {  
   const onSubmit=()=>{
     Alert.alert('Issue Submitted Successfully')
   }
@@ -48,6 +48,17 @@ const User_Home = ({navigation}:UserHomeProps) => {
                 placeholder='Enter the Phone Number'
               />
           </View>
+          <TouchableOpacity>
+          <View style={{flexDirection:'row',justifyContent:'center'}}>
+          <View style={styles.cameraButton}>
+            <Image
+              source={require('../assets/camera.png')}
+              style={styles.icon}
+            />
+            <Text style={styles.cameraTitle}>Camera</Text>
+          </View>
+          </View>
+          </TouchableOpacity>
           <View style={styles.bottonContainer}>
             <TouchableOpacity onPress={onSubmit}>
               <View style={styles.btn}>
@@ -64,6 +75,27 @@ const User_Home = ({navigation}:UserHomeProps) => {
 }
 
 const styles=StyleSheet.create({
+  icon:{
+    height:15,
+          width:15,
+          marginRight:5,
+          marginTop:15,
+          marginLeft:10
+  },
+  cameraButton:{
+    height:50,
+    backgroundColor:'#402E32',
+    borderRadius:10,
+    width:110,
+    marginTop:30,
+    flexDirection:'row',
+    justifyContent:'space-evenly'
+  },
+  cameraTitle:{
+    color:'white',
+    marginTop:10,
+    marginBottom:10
+  },
   HomeBackground:{
     flex:1,
     flexDirection:'column',
